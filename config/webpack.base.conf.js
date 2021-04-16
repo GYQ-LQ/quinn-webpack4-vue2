@@ -78,17 +78,17 @@ module.exports = {
             includeSourcemap: false,
             hash: true,
         }]),
-        new CopyWebpackPlugin({
-            patterns: [{
-                    from: utils.resolve('edu.sellermotor.com'),
-                    to: './',
-                },
-                {
-                    from: utils.resolve('edu.sellermotor.en.com'),
-                    to: './en',
-                },
-            ]
-        }),
+        // new CopyWebpackPlugin({
+        //     patterns: [{
+        //             from: utils.resolve('edu.sellermotor.com'),
+        //             to: './',
+        //         },
+        //         {
+        //             from: utils.resolve('edu.sellermotor.en.com'),
+        //             to: './en',
+        //         },
+        //     ]
+        // }),
         new MiniCssExtractPlugin({
             filename: utils.assetsPath('css/[name].[contenthash:6].css'),
             chunkFilename: utils.assetsPath('css/[name].[contenthash:6].css'),
@@ -123,13 +123,13 @@ module.exports = {
             {
                 test: scssTest,
                 use: [...baseCssUse, 'sass-loader',
-                    {
-                        loader: 'sass-resources-loader',
-                        options: {
-                            sourceMap: true,
-                            resources: [utils.resolve('src/assets/style/theme.scss')]
-                        },
-                    },
+                    // {
+                    //     loader: 'sass-resources-loader',
+                    //     options: {
+                    //         sourceMap: true,
+                    //         resources: [utils.resolve('src/assets/style/theme.scss')]
+                    //     },
+                    // },
                 ],
             },
             {

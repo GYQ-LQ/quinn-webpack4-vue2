@@ -1,7 +1,7 @@
 /*
  * @Author: Quinn
  * @Date: 2020-12-02 15:09:26
- * @LastEditTime: 2021-03-25 18:34:15
+ * @LastEditTime: 2021-04-16 10:41:40
  * @LastEditors: quinn
  * @Description:
  */
@@ -18,9 +18,6 @@ module.exports = {
             'element-ui',
             'vue',
             'vue-router',
-            'vue-simple-uploader',
-            'vue-template-compiler',
-            'vuedraggable',
             'vuex',
         ]
     },

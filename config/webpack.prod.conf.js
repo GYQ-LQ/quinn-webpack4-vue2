@@ -1,7 +1,7 @@
 /*
  * @Author: Quinn
  * @Date: 2020-12-03 18:13:40
- * @LastEditTime: 2021-03-26 16:14:28
+ * @LastEditTime: 2021-04-16 15:09:28
  * @LastEditTime: 2021-03-23 17:56:37
  * @LastEditors: quinn
  * @Description:
@@ -14,6 +14,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
+const QuinnInsertWebpackPlugin = require('quinn-insert-webpack-plugin');
 const {
     CleanWebpackPlugin
 } = require('clean-webpack-plugin')
@@ -25,8 +26,7 @@ const {
 } = require('webpack-bundle-analyzer');
 const utils = require('./utils');
 const common = require('./webpack.base.conf')
-// 获取当前时间戳
-const TIME_STAMP = new Date().getTime()
+
 const env = require('./env/' + process.env.env_config + '.env')
 
 const prodWebpackConf = merge(common, {
@@ -56,6 +56,15 @@ const prodWebpackConf = merge(common, {
                 removeStyleLinkTypeAttributes: true,
                 useShortDoctype: true
             },
+        }),
+        new QuinnInsertWebpackPlugin({
+            assetsPath: 'system.html',
+            jsList: [{
+                type: 'async',
+                src: 'https://www.googletagmanager.com/gtag/js?id=G-5J9D66HYGW'
+            }, {
+                content: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-5J9D66HYGW');`
+            }]
         }),
         new OptimizeCssAssetsPlugin({
             assetNameRegExp: /\.optimize\.css$/g,
